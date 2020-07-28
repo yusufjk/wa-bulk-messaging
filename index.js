@@ -49,11 +49,12 @@ var reportData = [
     }) 
 	
 	try {
-		await page.waitForSelector(sendButtonSelector,{timeout:3000});
+		await page.waitForSelector(sendButtonSelector,{timeout:10000});
 		await page.click(sendButtonSelector);
 		console.log('sent message successfully to :: '+contactNo);
 		reportData.push([contactNo,contactName,"Delivered"]);
 	}catch(e){
+    console.log(e);
 		console.log('could not send message :: '+contactNo)
 		reportData.push([contactNo,contactName,"Not Delivered"]);
 	}
@@ -81,6 +82,8 @@ const getContact = (path) => {
 }
 
 const getContent = (name) => {
-  const content = "Afzalus Salaam," + name + "As per your response on the feedback form for HSB-Bangalore, we invite you to our official group on telegram for better communication with out esteemed members. Please join with below given link."
+  const content = `*Afzalus Salaam*,
+  _${name}_,
+  As per your response on the feedback form for HSB-Bangalore, we invite you to our official group on telegram for better communication with out esteemed members. Please join with below given link.`
   return content;
 }
