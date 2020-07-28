@@ -9,6 +9,8 @@
   "author": "do4mother",
   "license": "ISC",
   "dependencies": {
-    "puppeteer": "^1.13.0"
+    "puppeteer": "^1.13.0",
+    "sheetjs": "^2.0.0",
+    "xlsx": "^0.16.4"
   }
 }

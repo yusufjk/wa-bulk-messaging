@@ -11,6 +11,5 @@ npm install
 
 ```bash
 1. edit your contact list in contactlist.txt
-2. edit message in content.txt
-3. type "npm run serve" in terminal
+2. type "npm run serve" in terminal
 ```
