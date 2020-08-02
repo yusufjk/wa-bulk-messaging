@@ -94,9 +94,9 @@ MSB Bangalore is further structuring its HSB family. To keep all its members abr
 
 With that aim in mind the HSB body has formulated the following system and we would like every member of the HSB to be part of it :
 
-*Telegram* is the communication application we will be using going forward for all official communications & co-ordination activities amongst HSB members in Bangalore.
+*Telegram* is the communication application we will be using going forward for all communications and co-ordination activities amongst HSB members in Bangalore.
 
-Please join our Telegram group via - https://t.me/joinchat/Fjt0qVVSKNUNKQngn-ZXvg
+Please join our Telegram group via -  https://t.me/joinchat/Fjt0qVVSKNUNKQngn-ZXvg
 
 In the coming days we will be gradually inviting HSB members who have shared their contact information with us in the survey.
 To streamline group management we request you to please *not share* the invite with other HSB members. We are in process to build a registration system for HSB members and we will be inviting as many members on this platform in the coming days.
