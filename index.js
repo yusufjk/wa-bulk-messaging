@@ -2,11 +2,12 @@ const puppeteer = require('puppeteer');
 const config = require('./config')
 const fs = require('fs')
 const XLSX = require('xlsx');
+const { exit } = require('process');
 
 const start = async () => {
 const loginSelector = '._1QUKR';
 const sendButtonSelector = '._1U1xa';
-const invalidButtonSelector = '.S7_rT FV2Qy';
+const textKeyboardSelector = '._3FRCZ.copyable-text.selectable-text';
 
   const browser = await puppeteer.launch({
     headless: false,
@@ -30,6 +31,7 @@ const invalidButtonSelector = '.S7_rT FV2Qy';
 
   var workbook = XLSX.utils.book_new();
   var sheetName = "Delivery Report";
+  let count = 0;
 
 /* make worksheet */
 var reportData = [
@@ -44,21 +46,31 @@ var reportData = [
     await page.goto('https://web.whatsapp.com/send?phone='+contactNo+'&text='+content).catch(error => {
       console.log("Error while calling API. \n", error)
     })
-    await page.on('dialog', async dialog => {
+
+
+ await page.once('dialog', async dialog => {
       await dialog.accept()
     })
+    
+
 
 	try {
-		await page.waitForSelector(sendButtonSelector,{timeout:10000});
-		await page.click(sendButtonSelector);
+    await page.waitForSelector (sendButtonSelector, {timeout: 6000}).catch(error => {
+      console.log('could not send message :: '+contactNo)
+      reportData.push([contactNo,contactName,"Not Delivered"]);
+      process.exit(1);
+    })
+    await page.waitFor(2000);
+    await page.click(sendButtonSelector);
 		console.log('sent message successfully to :: '+contactNo);
 		reportData.push([contactNo,contactName,"Delivered"]);
 	}catch(e){
     console.log(e);
 		console.log('could not send message :: '+contactNo)
 		reportData.push([contactNo,contactName,"Not Delivered"]);
-	}
-	await page.waitFor(2000)
+  }
+  count = count + 1;
+	await page.waitFor(5000)
   }
 
   await page.waitFor(2000)
