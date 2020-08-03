@@ -83,8 +83,7 @@ const getContact = (path) => {
 
 const getContent = (name) => {
   const content = `*Baad As Salaam il Jameel*
-
-s_${name}_,
+  _${name}_,
 
 *MSB Educational Institute Bangalore* has been the second home of its students for more than three decades now, the family increasing in its count each year, crossing the figure of a hundreds of alumni.
 
