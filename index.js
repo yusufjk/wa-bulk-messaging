@@ -8,6 +8,7 @@ const start = async () => {
   const loginSelector = '._1QUKR';
   const sendButtonSelector = '._1U1xa';
   const textKeyboardSelector = '._3FRCZ.copyable-text.selectable-text';
+  const invalidNumberSelector = '.S7_rT FV2Qy';
   
   const browser = await puppeteer.launch({
     headless: false,
@@ -60,11 +61,8 @@ await page.once('dialog', async dialog => {
 
 
 try {
-  await page.waitForSelector (sendButtonSelector, {timeout: 10000}).catch(error => {
-    console.log("Count not find send button selector \n", error)
-    process.exit(1);
-  })
-  await page.waitFor(3000);
+  await page.waitForSelector (sendButtonSelector, {timeout: 7000});
+  await page.waitFor(4000);
   await page.click(sendButtonSelector);
   console.log('sent message successfully to :: '+contactNo);
   reportData.push([contactNo,contactName,"Delivered"]);
@@ -73,7 +71,7 @@ try {
   console.log('could not send message :: '+contactNo)
   reportData.push([contactNo,contactName,"Not Delivered"]);
 }
-await page.waitFor(7000)
+await page.waitFor(8000);
 }
 
 await page.waitFor(3000)
